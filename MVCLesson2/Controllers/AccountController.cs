@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCLesson2.Models;
+using MVCLesson2.Filters;
 
 namespace MVCLesson2.Controllers
 {
@@ -20,6 +21,13 @@ namespace MVCLesson2.Controllers
 
         public AccountController()
         {
+        }
+
+        [OverrideFilter]
+        [Authorize(Users = "sergey")]
+        public string Test()
+        {
+            return "Test";
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
